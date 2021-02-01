@@ -1,7 +1,7 @@
-package com.brep.personal;
+package com.brep.personal.repository.member;
 
+import com.brep.personal.repository.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

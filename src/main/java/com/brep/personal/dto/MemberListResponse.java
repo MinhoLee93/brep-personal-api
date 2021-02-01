@@ -1,5 +1,6 @@
-package com.brep.personal;
+package com.brep.personal.dto;
 
+import com.brep.personal.repository.member.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -14,14 +15,14 @@ import lombok.ToString;
 @Getter
 @ToString
 @Builder
-public class MembersResponse {
+public class MemberListResponse {
 
     private final Long id;
 
     private final String name;
 
-    public static MembersResponse from(Member member) {
-        return MembersResponse.builder()
+    public static MemberListResponse from(Member member) {
+        return MemberListResponse.builder()
                 .id(member.getId())
                 .name(member.getName())
                 .build();

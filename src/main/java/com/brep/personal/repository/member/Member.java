@@ -1,4 +1,4 @@
-package com.brep.personal;
+package com.brep.personal.repository.member;
 
 import lombok.Getter;
 

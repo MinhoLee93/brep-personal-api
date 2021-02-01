@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 2021/01/27
  * 1:53 오전
  */
-@FeignClient("meta-api")
+@FeignClient(
+        name = "meta-api"
+//       ,fallbackFactory = MetaFeignFallbackFactory.class
+)
 public interface MetaFeignClient {
     @RequestMapping(
             method = RequestMethod.GET,

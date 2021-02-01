@@ -1,13 +1,14 @@
-package com.brep.personal;
+package com.brep.personal.controller;
 
+import com.brep.personal.service.MemberService;
 import com.brep.personal.client.MetaDiscoveryClient;
 import com.brep.personal.client.MetaFeignClient;
 import com.brep.personal.client.MetaRestTemplateClient;
+import com.brep.personal.dto.MemberListResponse;
+import com.brep.personal.utils.UserContextHolder;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +35,9 @@ public class MemberController {
     private final MetaRestTemplateClient metaRestTemplateClient;
 
     @GetMapping("/members")
-    public List<MembersResponse> getAllMembers() {
-        return memberService.getAllMembers();
+    public List<MemberListResponse> getAllMembers() {
+        log.debug("MemberController Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
+        return memberService.getAllMembersByResilence4jBulkhead(1);
     }
 
     @GetMapping("/example-property")
